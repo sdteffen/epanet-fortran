@@ -3,7 +3,7 @@ epanet-fortran
 
 Example code to use the EPANET toolkit from FORTRAN.
 
-See [epanet.de/developer/fortran](http://epanet.de/developer/fortran) for details.
+See [epanet.de/developer/fortran.html](http://epanet.de/developer/fortran.html) for details.
 
 The example was developed and tested using gfortran and MinGW on Windows and might need adjustments for other compilers/operating systems.
 
