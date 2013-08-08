@@ -3,22 +3,317 @@ module epanet_toolkit
     implicit none
 
     interface
-        integer(c_int) function ENopen(inpfile, reportfile, binaryresultfile) bind (c, name = "ENopen")
-            use iso_c_binding
-            character(c_char), dimension(*) :: inpfile
-            character(c_char), dimension(*) :: reportfile
-            character(c_char), dimension(*) :: binaryresultfile
-        end function ENopen
-	
-		integer(c_int) function ENclose() bind (c, name = "ENclose")
-			use iso_c_binding
-		end function ENclose	
-  
-		 integer(c_int) function ENgetcount(code, count) bind (c, name="ENgetcount")
-			use iso_c_binding
-			integer(c_int), value :: code
-			integer(c_int) :: count
-		end function
+        
+integer(c_int) function ENopen(f1,f2,f3) bind(c,name="ENopen")
+use iso_c_binding
+character(c_char), dimension(*)  :: f1
+character(c_char), dimension(*)  :: f2
+character(c_char), dimension(*)  :: f3
+end function
+
+integer(c_int) function ENsaveinpfile(filename) bind(c,name="ENsaveinpfile")
+use iso_c_binding
+character(c_char), dimension(*)  :: filename
+end function
+
+integer(c_int) function ENclose() bind(c,name="ENclose")
+use iso_c_binding
+end function
+
+integer(c_int) function ENsolveH() bind(c,name="ENsolveH")
+use iso_c_binding
+end function
+
+integer(c_int) function ENsaveH() bind(c,name="ENsaveH")
+use iso_c_binding
+end function
+
+integer(c_int) function ENopenH() bind(c,name="ENopenH")
+use iso_c_binding
+end function
+
+integer(c_int) function ENinitH(flag) bind(c,name="ENinitH")
+use iso_c_binding
+integer(c_int), value  :: flag
+end function
+
+integer(c_int) function ENrunH(t) bind(c,name="ENrunH")
+use iso_c_binding
+integer(c_long)  :: t
+end function
+
+integer(c_int) function ENnextH(tstep) bind(c,name="ENnextH")
+use iso_c_binding
+integer(c_long)  :: tstep
+end function
+
+integer(c_int) function ENcloseH() bind(c,name="ENcloseH")
+use iso_c_binding
+end function
+
+integer(c_int) function ENsavehydfile(filename) bind(c,name="ENsavehydfile")
+use iso_c_binding
+character(c_char), dimension(*)  :: filename
+end function
+
+integer(c_int) function ENusehydfile(filename) bind(c,name="ENusehydfile")
+use iso_c_binding
+character(c_char), dimension(*)  :: filename
+end function
+
+integer(c_int) function ENsolveQ() bind(c,name="ENsolveQ")
+use iso_c_binding
+end function
+
+integer(c_int) function ENopenQ() bind(c,name="ENopenQ")
+use iso_c_binding
+end function
+
+integer(c_int) function ENinitQ(saveflag) bind(c,name="ENinitQ")
+use iso_c_binding
+integer(c_int), value  :: saveflag
+end function
+
+integer(c_int) function ENrunQ(t) bind(c,name="ENrunQ")
+use iso_c_binding
+integer(c_long)  :: t
+end function
+
+integer(c_int) function ENnextQ(tstep) bind(c,name="ENnextQ")
+use iso_c_binding
+integer(c_long)  :: tstep
+end function
+
+integer(c_int) function ENstepQ(tleft) bind(c,name="ENstepQ")
+use iso_c_binding
+integer(c_long)  :: tleft
+end function
+
+integer(c_int) function ENcloseQ() bind(c,name="ENcloseQ")
+use iso_c_binding
+end function
+
+integer(c_int) function ENwriteline(line) bind(c,name="ENwriteline")
+use iso_c_binding
+character(c_char), dimension(*)  :: line
+end function
+
+integer(c_int) function ENreport() bind(c,name="ENreport")
+use iso_c_binding
+end function
+
+integer(c_int) function ENresetreport() bind(c,name="ENresetreport")
+use iso_c_binding
+end function
+
+integer(c_int) function ENsetreport(s) bind(c,name="ENsetreport")
+use iso_c_binding
+character(c_char), dimension(*)  :: s
+end function
+
+integer(c_int) function ENgetversion(v) bind(c,name="ENgetversion")
+use iso_c_binding
+integer(c_int)  :: v
+end function
+
+integer(c_int) function ENgetcontrol(cindex, ctype, lindex, setting, nindex, level) bind(c,name="ENgetcontrol")
+use iso_c_binding
+integer(c_int), value :: cindex
+integer(c_int) :: ctype
+integer(c_int) :: lindex
+real(c_float) :: setting
+integer(c_int) :: nindex
+real(c_float) :: level
+end function
+
+integer(c_int) function ENgetcount(code,count) bind(c,name="ENgetcount")
+use iso_c_binding
+integer(c_int), value  :: code
+integer(c_int)  :: count
+end function
+
+integer(c_int) function ENgetoption(code,value) bind(c,name="ENgetoption")
+use iso_c_binding
+integer(c_int), value  :: code
+real(c_float)  :: value
+end function
+
+integer(c_int) function ENgettimeparam(code,value) bind(c,name="ENgettimeparam")
+use iso_c_binding
+integer(c_int), value  :: code
+integer(c_long)  :: value
+end function
+
+integer(c_int) function ENgetflowunits(code) bind(c,name="ENgetflowunits")
+use iso_c_binding
+integer(c_int)  :: code
+end function
+
+integer(c_int) function ENgetpatternindex(id,index) bind(c,name="ENgetpatternindex")
+use iso_c_binding
+character(c_char), dimension(*)  :: id
+integer(c_int)  :: index
+end function
+
+integer(c_int) function ENgetpatternid(index,id) bind(c,name="ENgetpatternid")
+use iso_c_binding
+integer(c_int), value  :: index
+character(c_char), dimension(*)  :: id
+end function
+
+integer(c_int) function ENgetpatternlen(index,len) bind(c,name="ENgetpatternlen")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int)  :: len
+end function
+
+integer(c_int) function ENgetpatternvalue(index,period,value) bind(c,name="ENgetpatternvalue")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int), value  :: period
+real(c_float)  :: value
+end function
+
+integer(c_int) function ENgetqualtype(qualcode,tracenode) bind(c,name="ENgetqualtype")
+use iso_c_binding
+integer(c_int)  :: qualcode
+integer(c_int)  :: tracenode
+end function
+
+integer(c_int) function ENgeterror(errcode,errmsg,n) bind(c,name="ENgeterror")
+use iso_c_binding
+integer(c_int), value  :: errcode
+character(c_char), dimension(*)  :: errmsg
+integer(c_int), value  :: n
+end function
+
+integer(c_int) function ENgetnodeindex(id,index) bind(c,name="ENgetnodeindex")
+use iso_c_binding
+character(c_char), dimension(*)  :: id
+integer(c_int)  :: index
+end function
+
+integer(c_int) function ENgetnodeid(index,id) bind(c,name="ENgetnodeid")
+use iso_c_binding
+integer(c_int), value  :: index
+character(c_char), dimension(*)  :: id
+end function
+
+integer(c_int) function ENgetnodetype(index,code) bind(c,name="ENgetnodetype")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int)  :: code
+end function
+
+integer(c_int) function ENgetnodevalue(index,code,value) bind(c,name="ENgetnodevalue")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int), value  :: code
+real(c_float)  :: value
+end function
+
+integer(c_int) function ENgetlinkindex(id,index) bind(c,name="ENgetlinkindex")
+use iso_c_binding
+character(c_char), dimension(*)  :: id
+integer(c_int)  :: index
+end function
+
+integer(c_int) function ENgetlinkid(index,id) bind(c,name="ENgetlinkid")
+use iso_c_binding
+integer(c_int), value  :: index
+character(c_char), dimension(*)  :: id
+end function
+
+integer(c_int) function ENgetlinktype(index,code) bind(c,name="ENgetlinktype")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int)  :: code
+end function
+
+integer(c_int) function ENgetlinknodes(index,node1,node2) bind(c,name="ENgetlinknodes")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int)  :: node1
+integer(c_int)  :: node2
+end function
+
+integer(c_int) function ENgetlinkvalue(index,code,value) bind(c,name="ENgetlinkvalue")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int), value  :: code
+real(c_float)  :: value
+end function
+
+integer(c_int) function ENsetcontrol(cindex, ctype, lindex, setting, nindex, level)
+use iso_c_binding
+integer(c_int), value :: cindex
+integer(c_int), value :: ctype
+integer(c_int), value :: lindex
+real(c_float), value :: setting
+integer(c_int), value :: nindex
+real(c_float), value :: level
+end function
+
+integer(c_int) function ENsetnodevalue(index,code,v) bind(c,name="ENsetnodevalue")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int), value  :: code
+real(c_float), value  :: v
+end function
+
+integer(c_int) function ENsetlinkvalue(index,code,v) bind(c,name="ENsetlinkvalue")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int), value  :: code
+real(c_float), value  :: v
+end function
+
+integer(c_int) function ENaddpattern(id) bind(c,name="ENaddpattern")
+use iso_c_binding
+character(c_char), dimension(*)  :: id
+end function
+
+integer(c_int) function ENsetpattern(index,f,n) bind(c,name="ENsetpattern")
+use iso_c_binding
+integer(c_int), value  :: index
+real(c_float)  :: f
+integer(c_int), value  :: n
+end function
+
+integer(c_int) function ENsetpatternvalue(index,period,value) bind(c,name="ENsetpatternvalue")
+use iso_c_binding
+integer(c_int), value  :: index
+integer(c_int), value  :: period
+real(c_float), value  :: value
+end function
+
+integer(c_int) function ENsettimeparam(code,value) bind(c,name="ENsettimeparam")
+use iso_c_binding
+integer(c_int), value  :: code
+integer(c_long), value  :: value
+end function
+
+integer(c_int) function ENsetoption(code,v) bind(c,name="ENsetoption")
+use iso_c_binding
+integer(c_int), value  :: code
+real(c_float), value  :: v
+end function
+
+integer(c_int) function ENsetstatusreport(code) bind(c,name="ENsetstatusreport")
+use iso_c_binding
+integer(c_int), value  :: code
+end function
+
+integer(c_int) function ENsetqualtype(qualcode,chemname,chemunits,tracenode) bind(c,name="ENsetqualtype")
+use iso_c_binding
+integer(c_int), value  :: qualcode
+character(c_char), dimension(*)  :: chemname
+character(c_char), dimension(*)  :: chemunits
+character(c_char), dimension(*)  :: tracenode
+end function
+
+
+
 	end interface
 
     ! Node parameters
