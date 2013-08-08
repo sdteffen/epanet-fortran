@@ -1,14 +1,18 @@
-epanet_fortran_example.exe: epanet_toolkit.o epanet_toolkit.f90 epanet2.dll
-	gfortran -o epanet_fortran_example.exe epanet_toolkit.o epanet_fortran_example.f90 -Wl,epanet2.dll
-	
-epanet_toolkit.o: epanet_toolkit.f90
-	gfortran -c epanet_toolkit.f90
-	
-epanet2.dll:
-		wget http://www.epa.gov/nrmrl/wswrd/dw/epanet/EN2toolkit.zip
-		unzip EN2toolkit.zip epanet2.dll
+%.o : %.c
+	gcc -c -o $@ $<
 
+c_objs = epanet.o input1.o input2.o input3.o rules.o output.o report.o \
+       inpfile.o hydraul.o smatrix.o quality.o mempool.o hash.o	
+	
+epanet_fortran_example : epanet_fortran_example.f03 $(c_objs) epanet_toolkit.o
+	gfortran -o epanet_fortran_example epanet_fortran_example.f03 $(c_objs) -lm
+	
+epanet_toolkit.o: epanet_toolkit.f03
+	gfortran -c epanet_toolkit.f03
+	
 clean:
 	-rm *.o
 	-rm *.mod
 	-rm *.exe
+		
+

@@ -2,16 +2,19 @@ program epanet_toolkit_example
     use epanet_toolkit
     implicit none
 
-    !      Dim num_nodes As Integer
-    !     Dim num_links As Integer
-    !    Dim t As Integer
-    !   Dim tleft As Integer
-    !  Dim value As Single 
-    ! Dim id As String
+    integer (c_int) :: num_nodes = 0
+	integer (c_int) :: num_links = 0
+	integer (c_int) :: rv 
 
-    write(*, *) ENopen("Net1.inp", "Net1.txt", "Net1.bin")
-    !write(*,*) ENgetcount(EN_NODECOUNT, num_nodes)
-    ! Call ENgetcount(EN_LINKCOUNT, num_links)
+    rv = ENopen("Net1.inp" // c_null_char, "Net1.txt" // c_null_char, "Net1.bin" // c_null_char )
+	print *, "ENopen() returned:", rv
+    rv = ENgetcount(EN_NODECOUNT, num_nodes)
+	print *, "ENgecount() returned:", rv
+	print *, "EN_NODECOUNT:", num_nodes
+	rv = ENgetcount(EN_LINKCOUNT, num_links)
+	print *, "ENgetcount() returned:", rv
+	print *, "EN_LINKCOUNT:", num_links
+	
     ! ENsolveH()
     ! ENopenQ()
     ! ENinitQ(0)
