@@ -11,11 +11,8 @@ To install gfortran on Windows, run
 
 mingw-get install gfortran
 
-The provided example epanet_fortran_example.exe needs the epanet2.dll from the EPANET toolkit to link.
-Either place it manually next to the source code or run the following to to download and extract it automatically:
-
-make epanet2.dll
+The C sources are the original EPANET sources, with SOL defined instead or CLE or DLL.
 
 To build the example:
 
-make epanet_fortran_example.exe
+make epanet_fortran_example

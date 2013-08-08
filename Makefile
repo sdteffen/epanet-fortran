@@ -2,7 +2,7 @@
 	gcc -c -o $@ $<
 
 c_objs = epanet.o input1.o input2.o input3.o rules.o output.o report.o \
-       inpfile.o hydraul.o smatrix.o quality.o mempool.o hash.o	
+	inpfile.o hydraul.o smatrix.o quality.o mempool.o hash.o	
 	
 epanet_fortran_example : epanet_fortran_example.f03 $(c_objs) epanet_toolkit.o
 	gfortran -o epanet_fortran_example epanet_fortran_example.f03 $(c_objs) -lm
