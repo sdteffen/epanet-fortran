@@ -970,8 +970,7 @@ int DLLEXPORT ENgetversion(int *v)
 } 
 
 
-int DLLEXPORT ENgetcontrol(int cindex, int *ctype, int *lindex,
-              float *setting, int *nindex, float *level)
+int DLLEXPORT ENgetcontrol(int cindex, int *ctype, int *lindex, float *setting, int *nindex, float *level)
 /*----------------------------------------------------------------
 **  Input:   cindex   = control index (position of control statement
 **                      in the input file, starting from 1) 
@@ -1708,8 +1707,7 @@ int DLLEXPORT ENgetlinkvalue(int index, int code, float *value)
 */
 
 
-int DLLEXPORT ENsetcontrol(int cindex, int ctype, int lindex,
-              float setting, int nindex, float level)
+int DLLEXPORT ENsetcontrol(int cindex, int ctype, int lindex, float setting, int nindex, float level)
 /*----------------------------------------------------------------
 **  Input:   cindex  = control index (position of control statement
 **                     in the input file, starting from 1)
@@ -2355,8 +2353,7 @@ int  DLLEXPORT ENsetstatusreport(int code)
 }
 
 
-int  DLLEXPORT ENsetqualtype(int qualcode, char *chemname,
-                               char *chemunits, char *tracenode)
+int  DLLEXPORT ENsetqualtype(int qualcode, char *chemname, char *chemunits, char *tracenode)
 /*----------------------------------------------------------------
 **  Input:   qualcode  = WQ parameter code (see TOOLKIT.H)
 **           chemname  = name of WQ constituent 

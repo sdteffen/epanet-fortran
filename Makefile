@@ -14,5 +14,10 @@ clean:
 	-rm *.o
 	-rm *.mod
 	-rm *.exe
+	
+c2f:
+	grep -h DLLEXPORT *.c > c.txt
+	sed -f c2f.sed c.txt > d.txt
+	sed '/^ :[ :]*$$/d' d.txt > c.f03
 		
 
