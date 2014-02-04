@@ -25,7 +25,8 @@ program epanet_toolkit_example
 
     integer(c_int) :: num_nodes = 0
     integer(c_int) :: num_links = 0
-    integer(c_int) :: i, rv, t, tleft
+    integer(c_int) :: i, rv 
+    integer(c_long) :: t, tleft
     real(c_float) :: value
     character(c_char), dimension(10) :: id = ""
 
